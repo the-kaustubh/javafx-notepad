@@ -36,11 +36,10 @@ public class Notepad extends Application {
         superLayout.setTop(vb);
 
         HBox textContainer = new HBox();
-        notepad.setMinWidth(800);
         textContainer.getChildren().add(notepad);
         superLayout.setCenter(textContainer);
-
-
+        
+        
         Scene primaryScene = new Scene(superLayout, 800, 600);
         primaryStage.setOnCloseRequest(e -> {
             e.consume();
@@ -50,6 +49,7 @@ public class Notepad extends Application {
             }
         });
         
+        notepad.setMinWidth(primaryScene.getWidth()+1000);
         primaryStage.setScene(primaryScene);
         primaryStage.show();        
     }
@@ -83,7 +83,7 @@ public class Notepad extends Application {
         saveAs.setOnAction(e -> {
             String fname, data;
             if(title.equals("Untitled")) {
-                // fname = ConfirmBox.display("Save File" + title, title);
+                // fname = SaveAs.display("Save File" + title, title);
                 fname = title;
                 data = np.getText();
                 try {
